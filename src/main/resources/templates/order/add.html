@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head lang="en">
+    <title>Please Order - CoffeeShop</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+  </head>
+  <body>
+    <div class="container">
+      <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+      <form th:action="@{/orders/add}" method="post" th:object="${order}">
+        <input type="hidden" th:field="*{id}" />
+        <div class="panel panel-default">
+          <div class="panel-heading lead">Place Order</div>
+          <fieldset>
+            <div class="col-lg-12" th:if="${message != null}">
+              <div class="alert alert-success" th:text="${message}"></div>
+            </div>
+            <div class="col-lg-12" th:if="${#fields.hasGlobalErrors()}">
+              <div class="alert alert-danger" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</div>
+            </div>
+            <div class="col-lg-12 form-group" th:classappend="${#fields.hasErrors('orderDate')} ? 'has-error'">
+              <label class="col-lg-2 control-label" for="orderDate">Order Date</label>
+              <div class="col-lg-4">
+                <input type="datetime" id="orderDate" class="form-control"
+                       th:field="*{orderDate}" />
+                <small class="help-block"
+                       th:if="${#fields.hasErrors('orderDate')}"
+                       th:errors="*{orderDate}"></small>
+              </div>
+            </div>
+            <div class="col-lg-12 form-group">
+              <label class="col-lg-2">Products</label>
+              <div class="col-lg-8 orderLines">
+                <div class="row orderLine" th:each="orderLine, rowStat : *{orderLines}"
+                     th:attr="index=${rowStat.index}">
+                  <div class="col-lg-4">
+                    <select class="form-control productName"
+                            th:field="*{orderLines[__${rowStat.index}__].product}">
+                      <option th:value="NULL">---Select Product---</option>
+                      <option th:each="product : ${products}"
+                              th:value="${{product}}"
+                              th:text="${product.productName}"></option>
+                    </select>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control quantity" placeholder="Quantity"
+                           th:field="*{orderLines[__${rowStat.index}__].quantity}" />
+                  </div>
+                  <div class="col-sm-2">
+                    <button th:if="${rowStat.last}"
+                            class="btn btn-success btn-add-orderLine"
+                            type="submit"
+                            name="addOrderLine">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button th:if="${!rowStat.last}"
+                            th:value="${rowStat.index}"
+                            class="btn btn-danger btn-remove-orderLine"
+                            type="submit"
+                            name="removeOrderLine">
+                      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 form-group">
+              <label class="col-lg-2"></label>
+              <div class="col-lg-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-default" th:href="@{/}">Cancel</a>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

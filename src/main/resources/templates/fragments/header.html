@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head lang="en"></head>
+  <body>
+    <div th:fragment="header">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">CoffeeShop</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="#" th:href="@{/orders/add}" sec:authorize="hasAnyRole('ROLE_CUSTOMER', 'ROLE_ADMIN')">Place Orders</a>
+              </li>
+              <li>
+                <a href="#" th:href="@{/orders}" sec:authorize="hasAuthority('ROLE_ADMIN')">Orders</a>
+              </li>
+              <li>
+                <a href="#" th:href="@{/persons}" sec:authorize="hasAuthority('ROLE_ADMIN')">Persons</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a></li>
+              <li><a href="#" th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a></li>
+              <li><a href="#" th:href="@{/profile}" sec:authorize="isAuthenticated()">Profile</a></li>
+              <li><a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout (<span sec:authentication="name"></span>) </a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

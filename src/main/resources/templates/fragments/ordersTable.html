@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="ordersTable">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="lead">List of Orders</span>
+        </div>
+        <div class="panel-body" th:if="${#lists.isEmpty(orders)}">
+          <div class="alert alert-warning" style="margin-bottom: 0">No orders found.</div>
+        </div>
+        <table class="table table-hover" th:if="${!#lists.isEmpty(orders)}">
+          <thead>
+            <tr>
+              <th width="70">ID</th>
+              <th width="120">Date</th>
+              <th width="200">Person</th>
+              <th width="120">Total Amount</th>
+              <th>Products</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="order : ${orders}">
+              <td th:text="${order.id}">ID</td>
+              <td th:text="${order.orderDate}">Date</td>
+              <td th:text="${order.person.username}">Username</td>
+              <td th:text="${#numbers.formatDecimal(order.totalAmount, 1, 2)}">##.##</td>
+              <td>
+                <ul>
+                  <li th:each="orderLine : ${order.orderLines}"
+                      th:text="${orderLine.product.productName + ' (' + orderLine.quantity + ')'}"></li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

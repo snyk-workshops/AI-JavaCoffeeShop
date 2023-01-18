@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="personsTable">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a th:href="@{/persons/add}" class="btn btn-success pull-right">
+            <i class="glyphicon glyphicon-plus"></i>
+          </a>
+          <span class="lead">List of Persons</span>
+        </div>
+        <div class="panel-body" th:if="${#lists.isEmpty(persons)}">
+          <div class="alert alert-warning" style="margin-bottom: 0">No persons found.</div>
+        </div>
+        <table class="table table-hover" th:if="${!#lists.isEmpty(persons)}">
+          <thead>
+            <tr>
+              <th width="70">ID</th>
+              <th>Username</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th width="120"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="person : ${persons}">
+              <td th:text="${person.id}">ID</td>
+              <td th:text="${person.username}">Username</td>
+              <td th:text="${person.firstName}">First Name</td>
+              <td th:text="${person.lastName}">Last Name</td>
+              <td th:text="${person.email}">Email</td>
+              <td th:text="${person.phone}">Phone</td>
+              <td th:text="${person.address != null ? person.address : ''}">Address</td>
+              <td>
+                <a th:href="@{/persons/edit/{id}(id=${person.id})}" class="btn btn-primary btn-sm" title="Edit">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <a th:href="@{/persons/delete/{id}(id=${person.id})}" class="btn btn-danger btn-sm" title="Delete">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
