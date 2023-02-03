@@ -14,16 +14,11 @@ import java.util.List;
 
 @Service
 public class PersonService {
-    private final PersonRepository personRepository;
     @Autowired
-    private final PasswordEncoder passwordEncoder;
-
-
+    private PersonRepository personRepository;
     @Autowired
-    public PersonService(PersonRepository personRepository, PasswordEncoder passwordEncoder) {
-        this.personRepository = personRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private PasswordEncoder passwordEncoder;
+
 
     public List<Person> getAllPersons() {
         return personRepository.findAll();

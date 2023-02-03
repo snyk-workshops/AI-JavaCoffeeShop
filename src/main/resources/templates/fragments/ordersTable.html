@@ -28,7 +28,7 @@
               <td>
                 <ul>
                   <li th:each="orderLine : ${order.orderLines}"
-                      th:text="${orderLine.product.productName + ' (' + orderLine.quantity + ')'}"></li>
+                      th:text="${orderLine.productName + ' (' + orderLine.quantity + ')'}"></li>
                 </ul>
               </td>
             </tr>

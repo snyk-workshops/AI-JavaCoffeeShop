@@ -33,7 +33,7 @@ public class Person {
 
     private String address;
 
-    private Role roles;
+    private Role roles = Role.ROLE_CUSTOMER;
 
     public Person() {
     }

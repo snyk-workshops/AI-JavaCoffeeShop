@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/products")
@@ -59,5 +62,44 @@ public class ProductController {
     public String deleteProduct(@PathVariable Long id) {
         productService.delete(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/direct")
+    public void directLink (@RequestParam String param, HttpServletResponse response) throws IOException {
+        Product prod = productService.getProductByName(param);
+        response.setContentType("text/html");
+        var writer = response.getWriter();
+        String head = "<html>\n" +
+                "  <head lang=\"en\">\n" +
+                "    <title>CoffeeShop</title>\n" +
+                "     \n" +
+                "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+                "    <link href=\"/webjars/bootstrap/3.3.4/css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\" />\n" +
+                "    <link href=\"/css/style.css\" rel=\"stylesheet\" media=\"screen\" />\n" +
+                "    <script src=\"/webjars/jquery/2.1.4/jquery.js\"></script>\n" +
+                "    <script src=\"/webjars/bootstrap/3.3.4/js/bootstrap.js\"></script>\n" +
+                "   \n" +
+                "  </head>\n" +
+                "  <body><div class=\"container\"><div class=\"panel panel-default\">";
+
+        String foot = "  </div></div></body>\n" +
+                "</html>";
+
+
+        writer.write(head);
+        writer.write("<div class=\"panel-heading\"><h1>"+ param + "</h1></div>");
+
+        String output = "<div class=\"panel-body\">" +
+                "<ul>" +
+                "<li>%s</li>" +
+                "<li>%s</li>" +
+                "<li>%s</li>" +
+                "</ul>" +
+                "</div>";
+
+        writer.write(String.format(output, prod.getDescription(), prod.getProductType(), prod.getPrice()));
+        writer.write(foot);
+
+        response.getWriter().flush();
     }
 }

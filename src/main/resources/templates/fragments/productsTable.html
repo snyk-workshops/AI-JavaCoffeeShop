@@ -9,7 +9,7 @@
           <span class="lead"> Search Products </span>
         </div>
         <div class="panel-body">
-          <p>Search products by <mark>name</mark>, <mark>type</mark> or <mark>description</mark></p>
+          <p>Search products by <mark>name</mark> or <mark>description</mark></p>
           <form th:action="@{/}" method="post">
             <input type="text" th:value="${input}" name="input" size="50"/>
             <input type="submit"/>
@@ -41,7 +41,8 @@
           <tbody>
             <tr th:each="product : ${products}">
               <td th:text="${product.id}">ID</td>
-              <td th:text="${product.productName}">Name</td>
+<!--              <td th:text="${product.productName}">Name</td>-->
+              <td><a th:href="'/products/direct?param=' + ${product.productName}" th:text="${product.productName}">Name</a></td>
               <td th:text="${product.description}">Description</td>
               <td th:text="${#numbers.formatDecimal(product.price, 1, 2)}">##.##</td>
               <td th:text="${product.productType}">BREAKFAST</td>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Orders - CoffeeShop</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="lead">Import orders</span>
+        </div>
+        <div class="panel-body">
+            <form method="POST" action="import" enctype="multipart/form-data">
+                <label for="fileInput">Choose XML or YAML file </label>
+                <input type="file" name="file" id="fileInput"/><br/><br/>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

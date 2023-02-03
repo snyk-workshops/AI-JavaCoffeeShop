@@ -2,6 +2,7 @@ package nl.brianvermeer.workshop.coffee.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class OrderLine {
@@ -12,8 +13,15 @@ public class OrderLine {
     @Min(value = 1)
     private int quantity;
 
-    @OneToOne
+    @Transient
     private Product product;
+
+    @Column(length = 10000)
+    private String productName;
+
+    @NotNull(message = "Product price cannot be empty")
+    @Min(value = 0, message = "Product price must be greater than or equal to 0")
+    private Double price;
 
     @ManyToOne
     private Order order;
@@ -42,6 +50,18 @@ public class OrderLine {
         this.product = product;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
     public Order getOrder() {
         return order;
     }
@@ -51,11 +71,11 @@ public class OrderLine {
     }
 
     public double getSubtotal() {
-        return quantity * product.getPrice();
+        return quantity * price;
     }
 
     public double getPrice() {
-        return product.getPrice();
+        return price;
     }
 
     @Override
@@ -63,7 +83,8 @@ public class OrderLine {
         return "OrderLine{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", product=" + product +
+                ", product='" + product + '\'' +
+                ", price=" + price +
                 ", order=" + order +
                 '}';
     }

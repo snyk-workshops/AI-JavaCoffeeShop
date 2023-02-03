@@ -31,8 +31,10 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a></li>
               <li><a href="#" th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a></li>
+              <li><a href="#" th:href="@{/orders/myorders}" sec:authorize="isAuthenticated()">My Orders</a></li>
               <li><a href="#" th:href="@{/profile}" sec:authorize="isAuthenticated()">Profile</a></li>
               <li><a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout (<span sec:authentication="name"></span>) </a></li>
+              <li><p th:utext="'User: '+ ${#authentication.name}"/> </li>
             </ul>
           </div>
         </div>

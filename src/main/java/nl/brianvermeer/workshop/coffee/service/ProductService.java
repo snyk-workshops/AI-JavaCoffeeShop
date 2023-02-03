@@ -30,19 +30,6 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<Product> findByTextSearch(String criteria) {
-        if (!criteria.contains("%")) {
-            criteria = "%" + criteria + "%";
-        }
-        return productRepository.findByProductNameLikeOrDescriptionLikeAllIgnoreCase(criteria, criteria);
-    }
-
-    public List<Product> findByPrice(double minPrice, double maxPrice) {
-        return productRepository.findByPriceBetween(minPrice, maxPrice);
-    }
-
-    public List<Product> findByProductType(ProductType productType) {
-        return productRepository.findByProductType(productType);
-    }
+    public Product getProductByName(String name) { return productRepository.findProductByProductName(name); }
 
 }

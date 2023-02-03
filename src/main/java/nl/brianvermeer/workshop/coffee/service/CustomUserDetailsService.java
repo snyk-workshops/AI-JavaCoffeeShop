@@ -22,11 +22,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = personRepository.findByUsername(username);
         if (user == null) {
-            return new User(null, null, Collections.emptyList());
+            throw new UsernameNotFoundException(username);
         }
 
         var role = new SimpleGrantedAuthority(user.getRoles().toString());
         return new User(user.getUsername(), user.getEncryptedPassword(), List.of(role));
-
     }
 }

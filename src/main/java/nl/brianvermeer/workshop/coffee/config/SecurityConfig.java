@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -16,7 +17,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new Pbkdf2PasswordEncoder();
     }
 
     @Bean
@@ -25,14 +26,15 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/", "/webjars/**", "/css/**", "/home", "/index", "/register").permitAll()
-                .antMatchers("/orders/add").hasAnyRole("ADMIN", "CUSTOMER")
+                .antMatchers("/", "/webjars/**", "/css/**", "/home", "/index", "/register", "/products/direct/**").permitAll()
+                .antMatchers("/orders/add", "/orders/myorders/**").hasAnyRole("ADMIN", "CUSTOMER")
                 .antMatchers("/products/**", "/orders/**", "/persons/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin(
                         form -> form.loginPage("/login")
                                 .loginProcessingUrl("/login")
+                                .failureUrl("/login?error")
                                 .defaultSuccessUrl("/")
                                 .permitAll()
                 ).logout(

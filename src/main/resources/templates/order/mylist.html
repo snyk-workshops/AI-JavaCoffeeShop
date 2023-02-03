@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Orders - CoffeeShop</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <a th:href="@{/orders/myorders/export.yaml}" class="btn btn-primary btn-sm pull-right">Export YAML</a>
+        <a th:href="@{/orders/myorders/export.xml}" class="btn btn-primary btn-sm pull-right">Export XML</a>
+        <a th:href="@{/orders/myorders/import}" class="btn btn-primary btn-sm pull-left">Import</a>
+
+    </div>
+  </div>
+
+
+
+    <!--/*/ <th:block th:include="fragments/ordersTable :: ordersTable"></th:block> /*/-->
+</div>
+</body>
+</html>

@@ -23,9 +23,6 @@ public class OrderService {
         orderRepository.delete(order);
     }
 
-    public List<Order> findByProduct(Product product) {
-        return orderRepository.findDistinctOrderByOrderLines_Product(product);
-    }
 
     public List<Order> findByPerson(Person person) {
         return orderRepository.findOrderByPerson(person);
@@ -33,10 +30,6 @@ public class OrderService {
 
     public List<Order> findByDate(Date minDate, Date maxDate) {
         return orderRepository.findOrderByOrderDateBetween(minDate, maxDate);
-    }
-
-    public Order findById(Long id) {
-        return orderRepository.findById(id).get();
     }
 
     public List<Order> findAll() {
