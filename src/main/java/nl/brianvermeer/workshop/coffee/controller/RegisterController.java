@@ -58,7 +58,6 @@ public class RegisterController {
         if (!hasError) {
             try {
                 personService.registerNewPerson(person);
-                loginAfterRegistering(person, request);
             } catch (EmailTakenException e) {
                 hasError = true;
                 result.rejectValue("email", "", "Email is already taken");
@@ -76,16 +75,4 @@ public class RegisterController {
         return "redirect:/";
     }
 
-    private void loginAfterRegistering(Person person, HttpServletRequest request) {
-//        UsernamePasswordAuthenticationToken token;
-//        token = new UsernamePasswordAuthenticationToken(person.getUsername(), person.getPassword());
-//
-//        // create session if not exist
-//        request.getSession();
-//
-//        token.setDetails(new WebAuthenticationDetails(request));
-//
-//        Authentication authentication = authenticationManager.authenticate(token);
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-    }
 }

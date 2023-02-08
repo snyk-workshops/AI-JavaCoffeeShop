@@ -13,6 +13,7 @@ import nl.brianvermeer.workshop.coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.validation.ConstraintViolationException;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -84,12 +85,12 @@ public class Filler {
 
     public void createCoffee() {
         var coffee = faker.coffee();
-        var product = new Product(coffee.name1() + " " +coffee.name2(),
+        var product = new Product(coffee.name1() + " " + coffee.name2(),
                 "Body: " + coffee.body() + " \nTaste:  " + coffee.notes(),
-                faker.number().randomDouble(2,1,4),
+                faker.number().randomDouble(2, 1, 4),
                 ProductType.COFFEE
         );
-        productService.save(product);
+        storeProduct(product);
     }
 
     public void createCoffees(int amount) {
@@ -105,7 +106,8 @@ public class Filler {
                 faker.number().randomDouble(4,1,12),
                 ProductType.BEER
         );
-        productService.save(product);
+        storeProduct(product);
+
     }
 
     public void createBeers(int amount) {
@@ -114,10 +116,22 @@ public class Filler {
         }
     }
 
+    private void storeProduct(Product prod) {
+        try {
+            productService.save(prod);
+        } catch (Exception cve) {
+            System.out.println("Skip product creation ["+prod.getProductName()+"] (possible duplicate name)");
+        }
+    }
+
     public void createOrders() {
+        createOrders(5);
+    }
+
+    public void createOrders(int maxAmount) {
         var people = personService.getAllPersons();
         var products = productService.getAllProducts();
-        people.forEach(p -> createOrdersforPerson(p, products, faker.number().numberBetween(1,5)));
+        people.forEach(p -> createOrdersforPerson(p, products, faker.number().numberBetween(1,maxAmount)));
     }
 
     private void createOrdersforPerson(Person p, List<Product> products, int amount) {

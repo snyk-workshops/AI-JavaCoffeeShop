@@ -35,6 +35,8 @@ public class Person {
 
     private Role roles = Role.ROLE_CUSTOMER;
 
+    private String profilePic = "default-profile-picture.jpg";
+
     public Person() {
     }
 
@@ -143,6 +145,14 @@ public class Person {
         this.roles = roles;
     }
 
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -158,6 +168,7 @@ public class Person {
                 ", enable=" + enable +
                 ", address='" + address + '\'' +
                 ", roles=" + roles +
+                ", profilePic='" + profilePic + '\'' +
                 '}';
     }
 }

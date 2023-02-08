@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Edit Product - CoffeeShop</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="lead">Upload Profile Image</span>
+        </div>
+        <div class="panel-body">
+            <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+            <form method="post" th:action="@{/uploadimage}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" name="image" accept="image/*" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-success">Upload image</button>
+            </form>
+            <span th:if="${msg != null}" th:text="${msg}" class="alert alert-success"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
