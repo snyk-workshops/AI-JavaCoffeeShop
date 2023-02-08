@@ -12,20 +12,17 @@ public class CoffeeShopApplication {
         SpringApplication.run(CoffeeShopApplication.class, args);
     }
 
-
     @Bean
     public CommandLineRunner fill(Filler filler) {
         System.out.println("start filling");
         return (args) -> {
-            filler.createAdmin("Admin", "qqq");
-            filler.createCustomer("Brian", "qwerty");
-            filler.createPeople(10);
+            filler.createAdmin("Admin", "admin");
+            filler.createCustomer("User", "user");
+            filler.createPeople(6);
             filler.createCoffees(10);
-            filler.createBeers(15);
-            filler.createOrders();
+            filler.createBeers(8);
+            filler.createOrders(3);
             System.out.println("READY!");
         };
     }
-
-
 }
