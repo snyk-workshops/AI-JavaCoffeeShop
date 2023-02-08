@@ -14,7 +14,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" th:href="@{/}">CoffeeShop</a>
+            <a class="navbar-brand" href="#" th:href="@{/}">
+              CoffeeShop
+            </a>
+            <a href="http://snyk.io">
+            <img th:src="@{/img/snyklogo.png}" alt="" height="30" class="navbar-brand" />
+            </a>
           </div>
           <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -34,7 +39,6 @@
               <li><a href="#" th:href="@{/orders/myorders}" sec:authorize="isAuthenticated()">My Orders</a></li>
               <li><a href="#" th:href="@{/profile}" sec:authorize="isAuthenticated()">Profile</a></li>
               <li><a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout (<span sec:authentication="name"></span>) </a></li>
-              <li><p th:utext="'User: '+ ${#authentication.name}"/> </li>
             </ul>
           </div>
         </div>
