@@ -1,4 +1,4 @@
-# Assignment 1 - FREELOADER
+# Assignment - FREELOADER
 
 ## Part 1
 Even without logging in, you can browse the menu and search for specific items

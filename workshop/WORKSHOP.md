@@ -42,6 +42,7 @@ Essentially it is an application to order coffee's and beer's if you have an acc
 1. [Assignment FREELOADER](freeloader/assignment.md)
 2. [Snyk Tools](tools/snyktools.md)
 3. [Assignment OVERWRITE](overwrite/assignment.md)
+4. [Assignment I SPY](ispy/assignment.md)
 
 
 
