@@ -39,10 +39,11 @@ mvn spring-boot:run
 Before trying to exploit the application and/or fix vulnerabilities, play around in the app and make yourself familiar with the features.
 Essentially it is an application to order coffee's and beer's if you have an account.
 
-1. [Assignment FREELOADER](freeloader/assignment.md)
+1. [Assignment - FREELOADER](freeloader/assignment.md)
 2. [Snyk Tools](tools/snyktools.md)
-3. [Assignment OVERWRITE](overwrite/assignment.md)
-4. [Assignment I SPY](ispy/assignment.md)
+3. [Assignment - OVERWRITE](overwrite/assignment.md)
+4. [Assignment - I SPY](ispy/assignment.md)
+5. [Assignment - TAKE A COOKIE](takeacookie/assignment.md)
 
 
 
