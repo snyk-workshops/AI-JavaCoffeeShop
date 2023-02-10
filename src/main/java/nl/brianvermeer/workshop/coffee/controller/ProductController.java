@@ -67,6 +67,9 @@ public class ProductController {
     @GetMapping("/direct")
     public void directLink (@RequestParam String param, HttpServletResponse response) throws IOException {
         Product prod = productService.getProductByName(param);
+        if (prod == null) {
+            prod = new Product();
+        }
         response.setContentType("text/html");
         var writer = response.getWriter();
         String head = "<html>\n" +
