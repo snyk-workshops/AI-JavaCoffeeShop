@@ -19,7 +19,7 @@ Execute some JavaScript that displays the JSESSIONID when someone opens a porduc
 ## Part 2
 Fix the issue the appropriate way
 
-- [Hint 7](hint5.md)
+- [Hint 7](hint7.md)
 - [Solution](solution.md)
 
 [WORKSHOP OVERVIEW](../WORKSHOP.MD)
