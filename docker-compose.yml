@@ -1,0 +1,9 @@
+version: "2"
+services:
+  javacofeeshop:
+    build: .
+    container_name: JavaCoffeeShop
+    environment:
+      - DOCKER=1
+    ports:
+      - "8081:8081"
