@@ -21,20 +21,8 @@ public class XML2OrderParser {
 
     private SAXParserFactory factory = SAXParserFactory.newInstance();
 
-    public XML2OrderParser()  {
-        try {
-            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
-            factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
-        } catch (ParserConfigurationException | SAXNotRecognizedException | SAXNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public List<ExportOrder> parse(InputStream f) throws ParserConfigurationException, SAXException, IOException {
         SAXParser saxParser = factory.newSAXParser();
-        saxParser.setProperty("http://apache.org/xml/features/disallow-doctype-decl", true);
-        saxParser.setProperty("http://xml.org/sax/features/external-general-entities", false);
-
         OrderHandler handler = new OrderHandler();
         saxParser.parse(f, handler);
         return handler.orders;
