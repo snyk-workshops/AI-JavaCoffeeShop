@@ -1,7 +1,10 @@
 # Assignment - LOG4SHELL
 
 The application contains a vulnerable Log4j version. It evaluates JNDI commands and you can connect to an LDAP server that you own to create arbitrary code execution.
-The log4shellserver (`/tools/log4shellserver`) already contains an incomplete LDAP server based on the [marschalsec](https://github.com/mbechler/marshalsec/blob/master/src/main/java/marshalsec/jndi/LDAPRefServer.java) project by [Moritz Bechler](https://github.com/mbechler). This server gives a reference to Evil.class which is served to you using an HTTP server. Both the LDAP server and the HTTP are fully functional.
+
+The log4shell server (`/tools/log4shellserver`) already contains an incomplete LDAP server based on the [marschalsec](https://github.com/mbechler/marshalsec/blob/master/src/main/java/marshalsec/jndi/LDAPRefServer.java) project by [Moritz Bechler](https://github.com/mbechler). 
+
+This server gives a reference to Evil.class which is served to you using an HTTP server. Both the LDAP server and the HTTP are fully functional.
 
 ## Part 1
 check if we are vulnerable

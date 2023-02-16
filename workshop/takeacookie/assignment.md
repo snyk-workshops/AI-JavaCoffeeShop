@@ -9,7 +9,7 @@ Create a link that displays the JSESSIONID
 
 
 ## Part 2
-Execute some JavaScript that displays the JSESSIONID when someone opens a porduct page.
+Execute some JavaScript that displays the JSESSIONID when someone opens a product page.
 (so no specific parameters needed in the link)
 
 - [Hint 4](hint4.md)

@@ -1,4 +1,4 @@
-package nl.brianvermeer.workshop.gadget;
+package nl.brianvermeer.workshop.coffee.gadget;
 
 public class Gadget {
     private Runnable command;

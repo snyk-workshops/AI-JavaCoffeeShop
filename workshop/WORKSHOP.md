@@ -15,7 +15,7 @@
 ```
 git clone https://github.com/<your_username>/<forked-repo>.git 
 ```
-- Sign up for a free Snyk acount at https://snyk.io/signup (unless you already have one)
+- Sign up for a free Snyk account at https://snyk.io/signup (unless you already have one)
 - Connect the forked project to your Snyk projects and leave it there.
 
 ## Run the application
@@ -23,7 +23,7 @@ git clone https://github.com/<your_username>/<forked-repo>.git
 ```
 mvn spring-boot:run
 ```
-- If you run from you IDE, please set the this JVM-parameter : `TODO`
+- If you run from you IDE, please set this JVM-parameter : `-Dcom.sun.jndi.ldap.object.trustURLCodebase=true`
 - The application fills itself with data at startup wait until you see `READY` in the console.
 - You can access the application on http://localhost:8081
 - By default there are two users configured you can access

@@ -1,4 +1,4 @@
-package nl.brianvermeer.workshop.gadget;
+package nl.brianvermeer.workshop.coffee.gadget;
 
 import java.io.BufferedReader;
 import java.io.IOException;

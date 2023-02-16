@@ -1,6 +1,6 @@
 # Hint 6
 
-The database is open and accessable via http://localhost:8081/hs-console and the default password is .... empty :(
+The database is open and accessible via http://localhost:8081/hs-console and the default password is .... empty :(
 
 Choose a product and replace the productname with
 ```javascript
