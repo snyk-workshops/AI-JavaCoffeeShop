@@ -29,8 +29,8 @@ Set the these features to the created parser instead of the factory
 ```java
     public List<ExportOrder> parse(InputStream f) throws ParserConfigurationException, SAXException, IOException {
         SAXParser saxParser = factory.newSAXParser();
-        saxParser.setProperty("http://apache.org/xml/features/disallow-doctype-decl", true);
-        saxParser.setProperty("http://xml.org/sax/features/external-general-entities", false);
+        saxParser.getXMLReader().setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        saxParser.getXMLReader().setFeature("http://xml.org/sax/features/external-general-entities", false);
         ...    
 
 
