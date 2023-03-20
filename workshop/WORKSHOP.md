@@ -45,7 +45,7 @@ Essentially it is an application to order coffee's and beer's if you have an acc
 4. [Assignment - I SPY](ispy/assignment.md)
 5. [Assignment - TAKE A COOKIE](takeacookie/assignment.md)
 6. [Assignment - LOG4SHELL](log4shell/assignment.md)
-7. [Assignment - SHIP IT](takeacookie/shipit.md)
+7. [Assignment - SHIP IT](shipit/assignment.md)
 
 
 
