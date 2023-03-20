@@ -1,5 +1,3 @@
 # Hint 2
 
-Take a look at this blogpost for some explanation
-
-https://snyk.io/blog/create-sboms-java-maven-gradle/
+Take use [Snyk Maven Github](https://github.com/snyk/actions/tree/master/maven) action to scan your application.

@@ -1,4 +1,7 @@
 # Hint 3
 
-Use the CycloneDX plugin for Maven and connect it to the package phase.
+Take a look at this blog for a full walk through.
+https://snyk.io/blog/building-a-secure-pipeline-with-github-actions/
+
+
 

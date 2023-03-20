@@ -2,7 +2,7 @@
 
 Attach it to the package phase of Maven
 
-```xml
+```yaml
                 <executions>
                     <execution>
                         <phase>package</phase>

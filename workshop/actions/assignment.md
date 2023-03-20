@@ -8,18 +8,15 @@ Build a GitHub action that builds the application and tests your libraries for v
 - [Hint 3](hint3.md)
 - [Hint 4](hint4.md)
 
-
 ## Part 2
-Solve this problem so we cannot do such a remote code execution anymore.
-
+Add Snyk Monitor scanning to your pipeline whenever your open-source scanning succeeded
 
 - [Hint 5](hint5.md)
-- [Hint 6](hint6.md)
 
-## Part 2
-Fix the issue the appropriate way
 
-- [Hint 7](hint7.md)
+## Part 3
+Also add Snyk Code (SAST) Scanning to your initial pipeline before monitoring and let monitor depend on both open-source and code scanning 
+
 - [Solution](solution.md)
 
 [WORKSHOP OVERVIEW](../WORKSHOP.md)
