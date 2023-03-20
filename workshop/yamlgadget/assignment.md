@@ -1,18 +1,19 @@
-# Assignment - TAKE A COOKIE
+# Assignment - YAML GADGET
 
 ## Part 1
-Create a link that displays the JSESSIONID
+We can export and import Order using Yaml.
+Create a Yaml file that executes code like opening the calculator on your machine.
 
 - [Hint 1](hint1.md)
 - [Hint 2](hint2.md)
 - [Hint 3](hint3.md)
+- [Hint 4](hint4.md)
 
 
 ## Part 2
-Execute some JavaScript that displays the JSESSIONID when someone opens a specific product page.
-This means the script will NOT be part of the URL like in part1
+Solve this problem so we cannot do such a remote code execution anymore.
 
-- [Hint 4](hint4.md)
+
 - [Hint 5](hint5.md)
 - [Hint 6](hint6.md)
 
