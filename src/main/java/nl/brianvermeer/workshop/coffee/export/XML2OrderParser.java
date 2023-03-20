@@ -2,8 +2,6 @@ package nl.brianvermeer.workshop.coffee.export;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.SAXNotSupportedException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,9 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class XML2OrderParser {
 
@@ -34,9 +31,6 @@ public class XML2OrderParser {
 
         public List<ExportOrder> orders = new ArrayList<>();
         List<ExportOrderLine> orderLines = new ArrayList();
-
-
-        Map<String, String> values = new HashMap<>();
 
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
             if (qName.equalsIgnoreCase("Order")) order = true;

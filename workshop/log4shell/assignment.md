@@ -35,4 +35,4 @@ For instance open the calculator on your machine.
 - [Hint 7](hint7.md)
 - [Solution](solution.md)
 
-[WORKSHOP OVERVIEW](../WORKSHOP.MD)
+[WORKSHOP OVERVIEW](../WORKSHOP.md)

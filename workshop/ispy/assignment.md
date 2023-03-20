@@ -15,4 +15,4 @@ Fix the issue the appropriate way
 - [Hint 6](hint6.md)
 - [Solution](solution.md)
 
-[WORKSHOP OVERVIEW](../WORKSHOP.MD)
+[WORKSHOP OVERVIEW](../WORKSHOP.md)

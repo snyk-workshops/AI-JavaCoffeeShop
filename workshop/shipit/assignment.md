@@ -24,4 +24,4 @@ Create a user with less privileges to run the application
 ## Solution
 - [Solution](solution.md)
 
-[WORKSHOP OVERVIEW](../WORKSHOP.MD)
+[WORKSHOP OVERVIEW](../WORKSHOP.md)

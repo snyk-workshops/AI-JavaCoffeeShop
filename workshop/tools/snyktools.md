@@ -84,3 +84,5 @@ Check the marketplace for your specific IDE if you want to install it.
 ### Jetbrains IntelliJ IDEA
 ![](ij1.png)
 ![](ij2.png)
+
+[WORKSHOP OVERVIEW](../WORKSHOP.md)

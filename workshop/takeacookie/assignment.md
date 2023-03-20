@@ -22,4 +22,4 @@ Fix the issue the appropriate way
 - [Hint 7](hint7.md)
 - [Solution](solution.md)
 
-[WORKSHOP OVERVIEW](../WORKSHOP.MD)
+[WORKSHOP OVERVIEW](../WORKSHOP.md)
