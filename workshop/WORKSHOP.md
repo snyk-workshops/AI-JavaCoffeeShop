@@ -48,6 +48,7 @@ Essentially it is an application to order coffee's and beer's if you have an acc
 7. [Assignment - LOG4SHELL](log4shell/assignment.md)
 8. [Assignment - SHIP IT](shipit/assignment.md)
 9. [Assignment - BUILD-A-BOM](buildabom/assignment.md)
+10. [Assignment - ACTIONS](actions/assignment.md)
 
 
 

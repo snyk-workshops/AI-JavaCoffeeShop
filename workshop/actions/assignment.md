@@ -1,4 +1,4 @@
-# Assignment - BUILD-A-BOM
+# Assignment - ACTIONS
 
 ## Part 1
 Build a GitHub action that builds the application and tests your libraries for vulnerabilities using Snyk.

@@ -1,51 +1,73 @@
-# Solution Fix for BUILD_A_BOM Assignment
+# Solution Fix for ACTIONS Assignment
 
-Copy the plugin like in you existing `<build><plugins>` part of your Maven pom.
-Every time you call `mvn package` a CycloneDX-sbom file will be created in the `target` directory of your project.
+A possible solution for your GitHub action.
 
-```xml
+- the jobs `opensource-security` and `code-security` only run if the build succeeds
+- the job `opensource-monitor` monitors your dependency tree in the Snyk UI
+- the job `opensource-monitor` only runs if both `opensource-security` and `code-security` succeed.
+- you can use the `continue-on-error: true` if you do not want to block your pipeline
 
 
-    <build>
-        <finalName>JavaCoffeeShop</finalName>
-        <plugins>
-            ...
-            <plugin>
-                <groupId>org.cyclonedx</groupId>
-                <artifactId>cyclonedx-maven-plugin</artifactId>
-                <version>2.7.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>makeAggregateBom</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <projectType>library</projectType>
-                    <schemaVersion>1.4</schemaVersion>
-                    <includeBomSerialNumber>true</includeBomSerialNumber>
-                    <includeCompileScope>true</includeCompileScope>
-                    <includeProvidedScope>true</includeProvidedScope>
-                    <includeRuntimeScope>true</includeRuntimeScope>
-                    <includeSystemScope>true</includeSystemScope>
-                    <includeTestScope>false</includeTestScope>
-                    <includeLicenseText>false</includeLicenseText>
-                    <outputReactorProjects>true</outputReactorProjects>
-                    <outputFormat>all</outputFormat>
-                    <outputName>CycloneDX-Sbom</outputName>
-                </configuration>
-            </plugin>
-            ...
-        <plugins>
-    <build>
+
+```yaml
+name: Java CI with Maven and Snyk
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B package
+
+  opensource-security:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/maven@master
+        #        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  code-security:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/maven@master
+        #        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: code test
+
+  opensource-monitor:
+    needs: [ opensource-security, code-security ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/maven@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
+
+
+
 ```
-
-### Testing an SBOM
-
-Take a look at https://snyk.io/code-checker/sbom-security/ for testing an existing SBOM
-
-#### Small note:
-To make sure the SBOM you created will get parsed in the SBOM checker please remove `?type=jar` from all purls in the SBOM.
-This can be done easily with a find & replace in a text editor.
