@@ -49,6 +49,7 @@ Essentially it is an application to order coffee's and beer's if you have an acc
 8. [Assignment - SHIP IT](shipit/assignment.md)
 9. [Assignment - BUILD-A-BOM](buildabom/assignment.md)
 10. [Assignment - ACTIONS](actions/assignment.md)
+11. [Assignment - HARDENING](hardening/assignment.md)
 
 
 

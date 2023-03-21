@@ -44,8 +44,5 @@ Every time you call `mvn package` a CycloneDX-sbom file will be created in the `
 
 ### Testing an SBOM
 
-Take a look at https://snyk.io/code-checker/sbom-security/ for testing an existing SBOM
+Test the SBOM you just created at https://snyk.io/code-checker/sbom-security/ to see what vulnerabilities are in the system.
 
-#### Small note:
-To make sure the SBOM you created will get parsed in the SBOM checker please remove `?type=jar` from all purls in the SBOM.
-This can be done easily with a find & replace in a text editor.
