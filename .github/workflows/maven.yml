@@ -21,6 +21,7 @@ jobs:
       run: mvn -B package
 
   opensource-security:
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -31,6 +32,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   code-security:
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
