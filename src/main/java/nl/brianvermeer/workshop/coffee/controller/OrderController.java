@@ -92,18 +92,15 @@ public class OrderController {
         }
 
         try {
-            if (file.getContentType().contains("yaml")) {
-                InputStream inputStream = file.getInputStream();
-                YamlImportExport.importOrders(inputStream, person)
+            if (file.getContentType().contains("yaml") || fileExtIs(file, ".yaml") || fileExtIs(file, ".yml")) {
+                YamlImportExport.importOrders(file.getInputStream(), person)
                         .forEach(orderService::save);
-            } else if (file.getContentType().equals("text/xml")) {
-                // Get the file and save it somewhere
-                InputStream inputStream = file.getInputStream();
-                XML2OrderParser parser = new XML2OrderParser();
-                var parsedOrders = parser.parse(inputStream);
-                parsedOrders.stream()
+            } else if (file.getContentType().equals("text/xml") || fileExtIs(file, ".xml")) {
+                var parser = new XML2OrderParser();
+                parser.parse(file.getInputStream())
+                        .stream()
                         .map(eo -> ExportOrderConvertor.createOrders(eo,person))
-                        .forEach(orderService::save);
+                        .forEach(orderService::save);;
             }
 
 
@@ -112,6 +109,10 @@ public class OrderController {
         }
 
         return "redirect:/orders/myorders";
+    }
+
+    private boolean fileExtIs(MultipartFile file, String ext) {
+        return file.getOriginalFilename().endsWith(ext);
     }
 
 
