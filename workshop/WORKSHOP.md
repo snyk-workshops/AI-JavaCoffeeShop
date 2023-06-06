@@ -23,7 +23,7 @@ git clone https://github.com/<your_username>/<forked-repo>.git
 ```
 mvn spring-boot:run
 ```
-- If you run from you IDE, please set this JVM-parameter : `-Dcom.sun.jndi.ldap.object.trustURLCodebase=true`
+<!-- - If you run from you IDE, please set this JVM-parameter : `-Dcom.sun.jndi.ldap.object.trustURLCodebase=true` -->
 - The application fills itself with data at startup wait until you see `READY` in the console.
 - You can access the application on http://localhost:8081
 - By default there are two users configured you can access
@@ -39,17 +39,17 @@ mvn spring-boot:run
 Before trying to exploit the application and/or fix vulnerabilities, play around in the app and make yourself familiar with the features.
 Essentially it is an application to order coffee's and beer's if you have an account.
 
-1. [Assignment - FREELOADER](freeloader/assignment.md)
-2. [Snyk Tools](tools/snyktools.md)
-3. [Assignment - OVERWRITE](overwrite/assignment.md)
-4. [Assignment - I SPY](ispy/assignment.md)
-5. [Assignment - TAKE A COOKIE](takeacookie/assignment.md)
-6. [Assignment - YAML GADGET](yamlgadget/assignment.md)
-7. [Assignment - LOG4SHELL](log4shell/assignment.md)
-8. [Assignment - SHIP IT](shipit/assignment.md)
-9. [Assignment - BUILD-A-BOM](buildabom/assignment.md)
-10. [Assignment - ACTIONS](actions/assignment.md)
-11. [Assignment - HARDENING](hardening/assignment.md)
+- [Assignment - FREELOADER](freeloader/assignment.md)
+- [Snyk Tools](tools/snyktools.md)
+- [Assignment - OVERWRITE](overwrite/assignment.md)
+- [Assignment - I SPY](ispy/assignment.md)
+- [Assignment - TAKE A COOKIE](takeacookie/assignment.md)
+- [Assignment - YAML GADGET](yamlgadget/assignment.md)
+<!-- - [Assignment - LOG4SHELL](log4shell/assignment.md) -->
+- [Assignment - SHIP IT](shipit/assignment.md)
+- [Assignment - BUILD-A-BOM](buildabom/assignment.md)
+- [Assignment - ACTIONS](actions/assignment.md)
+- [Assignment - HARDENING](hardening/assignment.md)
 
 
 
