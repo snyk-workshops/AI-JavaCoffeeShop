@@ -1,4 +1,4 @@
-# Hint 6
+# Hint 7
 
 Find the XSS with you [Snyk tools](../tools/snyktools.md) and fix it.
 
