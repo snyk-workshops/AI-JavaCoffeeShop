@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+
+<Orders>
+    <Order>
+        <id>1995</id>
+        <orderDate>1995-05-23</orderDate>
+        <OrderLine>
+            <id>23</id>
+            <quantity>5</quantity>
+            <productName>Summer Light</productName>
+            <price>0.9</price>
+        </OrderLine>
+    </Order>
+</Orders>
