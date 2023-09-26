@@ -1,8 +1,8 @@
 package org.workshop.coffee.controller;
 
-import org.springframework.util.StringUtils;
 import org.springframework.web.util.HtmlUtils;
 import org.workshop.coffee.domain.Product;
+import org.workshop.coffee.domain.ProductType;
 import org.workshop.coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/products")
@@ -74,6 +75,11 @@ public class ProductController {
         }
         response.setContentType("text/html");
         var writer = response.getWriter();
+        buildProductPage(param, prod.getDescription(), prod.getProductType(), prod.getPrice(), writer);
+        writer.flush();
+    }
+
+    private void buildProductPage(String productName, String desc, ProductType productType, Double price, PrintWriter writer) throws IOException {
         String head = "<html>\n" +
                 "  <head lang=\"en\">\n" +
                 "    <title>CoffeeShop</title>\n" +
@@ -90,21 +96,21 @@ public class ProductController {
         String foot = "  </div></div></body>\n" +
                 "</html>";
 
-
         writer.write(head);
+
+        writer.write("<div class=\"panel-heading\"><h1>" + productName + "</h1></div>");
 
         String output = "<div class=\"panel-body\">" +
                 "<ul>" +
                 "<li>%s</li>" +
                 "<li>%s</li>" +
                 "<li>%s</li>" +
-                "<li>%s</li>" +
                 "</ul>" +
                 "</div>";
 
-        writer.write(String.format(output, param, prod.getDescription(), prod.getProductType(), prod.getPrice()));
+        writer.write(String.format(output, desc, productType, price));
         writer.write(foot);
 
-        response.getWriter().flush();
+
     }
 }
