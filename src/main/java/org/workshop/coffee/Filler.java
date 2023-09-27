@@ -90,6 +90,7 @@ public class Filler {
                 ProductType.COFFEE
         );
         storeProduct(product);
+        System.out.println("Created coffee: http://localhost:8081/products/direct?param=" + product.getProductName().replace(" ", "%20").replace("'","%27"));
     }
 
     public void createCoffees(int amount) {
@@ -106,7 +107,6 @@ public class Filler {
                 ProductType.BEER
         );
         storeProduct(product);
-
     }
 
     public void createBeers(int amount) {
