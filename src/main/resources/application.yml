@@ -1,0 +1,25 @@
+server:
+  port: 8081
+  servlet:
+    session:
+      cookie:
+        http-only: false
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+  devtools:
+    restart:
+      enabled: 'true'
+      poll-interval: '2s'
+      quiet-period: '1s'
+      additional-paths:
+        - src/main/java/
+        - src/main/resources/
